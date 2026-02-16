@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once __DIR__ . '/../src/Models/Comentario.php';
 require_once __DIR__ . '/../src/Services/ComentarioService.php';
 require_once __DIR__ . '/../src/Controllers/ComentarioController.php';
