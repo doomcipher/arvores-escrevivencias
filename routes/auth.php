@@ -4,6 +4,11 @@ header('Content-Type: application/json; charset=utf-8');
 // AUTH ROUTER - SUAP OAuth (ÚNICO)
 // ============================================
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
 require_once __DIR__ . '/../config/env.php';
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../src/Helpers/Response.php';
