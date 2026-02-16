@@ -1,5 +1,10 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
 require __DIR__ . '/../src/Models/Aluno.php';
 require __DIR__ . '/../src/Services/AlunoService.php';
 require __DIR__ . '/../src/Controllers/AlunoController.php';
