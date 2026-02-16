@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once __DIR__ . '/../src/Models/Post.php';
 require_once __DIR__ . '/../src/Services/PostService.php';
 require_once __DIR__ . '/../src/Controllers/PostController.php';
