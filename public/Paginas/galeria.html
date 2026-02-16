@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Imagens</title>
+
+  <link rel="stylesheet" href="/Css/style.css">
+  <link rel="stylesheet" href="/Css/galeria.css">
+</head>
+
+<body class="body-galeria">
+  <header class="header">
+    <div class="logo" id="logoGaleria">
+      <a href="/index.html"></a>
+      <img src="/Assets/Imagens/Icones/IconeMain.jpeg" alt="Logo">
+    </div>
+
+    <div class="header-login-container">
+      <a href="#" class="header-login-link" id="loginLink">
+        <div class="login-text-wrapper">
+          <span class="login-text-default">Login</span>
+          <span class="login-text-hover">Clique aqui!</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <main class="container galeria-container">
+    <section class="welcome-section">
+      <h1 class="welcome-title">🖼️ Galeria de Imagens</h1>
+      <p class="welcome-subtitle">Descubra os momentos capturados pelos nossos cursos</p>
+    </section>
+
+    <nav class="galeria-nav">
+      <a href="/index.html" class="nav-link glass-pill">← Voltar ao início</a>
+      <span class="nav-middle glass-pill">Galerias por tema</span>
+    </nav>
+
+    <section class="theme-section glass-card">
+      <h2 class="theme-title">Filtrar por tema</h2>
+      <div class="theme-nav" id="themeNav"></div>
+    </section>
+
+    <section class="galleries-section glass-card">
+      <div class="galleries-container" id="galleriesContainer">
+        <div class="loading">Carregando galerias...</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de imagem -->
+  <div class="modal" id="imageModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content glass-card">
+      <button class="modal-close" data-galeria-close>✕</button>
+      <img id="modalImage" class="modal-image" src="" alt="">
+    </div>
+  </div>
+
+  <!-- Comentários (markup igual ao Novembro, só texto adaptado) -->
+  <section id="commentsSection" class="comments-section">
+    <h3>Comentários</h3>
+
+    <p class="comments-login-warning" id="commentsWarning1" style="display:none;">
+      🔐 Faça login via SUAP para comentar.
+      <a href="#" id="loginComments1">Entrar agora</a>
+    </p>
+
+    <p class="comment-context" id="commentContext">
+      Selecione um post para comentar.
+    </p>
+
+    <div class="comments-form" id="commentsForm1" style="display:none;">
+      <textarea id="commentText1" placeholder="Escreva seu comentário..." maxlength="500"></textarea>
+      <button type="button" id="sendComment1" disabled>Publicar</button>
+    </div>
+
+    <div class="comments-list" id="commentsList1">
+      <p class="comments-empty" id="commentsEmpty1">Selecione um post para ver os comentários.</p>
+    </div>
+  </section>
+
+  <!-- Scripts comuns -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/Js/js.cookie.js"></script>
+  <script src="/Js/settings.js"></script>
+  <script src="/Js/client.js"></script>
+
+  <!-- Common -->
+  <script src="/js/common/auth.js"></script>
+  <script src="/js/common/ui.js"></script>
+  <script src="/js/common/tooltip.js"></script>
+  <script src="/js/common/comentarios.js"></script>
+
+
+
+  <!-- JS específico da galeria -->
+  <script src="/js/pages/galeria.js"></script>
+</body>
+
+</html>

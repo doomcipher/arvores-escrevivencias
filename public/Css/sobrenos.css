@@ -1,0 +1,109 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main.container {
+    flex: 1;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+.footer {
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    color: #f0f0f0;
+    padding: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.footer-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #e0e0e0;
+}
+
+.footer-email {
+    color: #a0d8ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-email:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-divider {
+    width: 80%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 12px;
+    }
+
+    .footer-text {
+        font-size: 0.85rem;
+    }
+
+    .footer-content {
+        gap: 6px;
+    }
+}
+
+
+/* ==========================
+   BACKGROUND SOBRE NÓS
+========================== */
+body.body-sobrenos {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Pseudo-elemento para o background */
+body.body-sobrenos::before {
+    content: '';
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    z-index: -1; /* atrás do conteúdo */
+    
+    background-image: url('../Assets/Imagens/Background/BackgroundMain.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    filter: blur(13px) brightness(1) saturate(1.25);
+}
+
+
+/* Logo redondo */
+.header .logo img {
+    width: 60px;       /* ajuste o tamanho que quiser */
+    height: 60px;      /* altura igual à largura */
+    border-radius: 50%; /* transforma em círculo */
+    object-fit: cover;  /* garante que a imagem preencha o círculo sem distorção */
+    display: block;
+}

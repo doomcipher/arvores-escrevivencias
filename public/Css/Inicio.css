@@ -1,0 +1,302 @@
+
+        body {
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: url('/Assets/Imagens/Background/BackgroundMain.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            filter: blur(13px) brightness(1) saturate(1.25);
+            opacity: 1;
+            transition: filter 1.2s cubic-bezier(0.33, 0.66, 0.66, 1), opacity 1.2s cubic-bezier(0.33, 0.66, 0.66, 1);
+            pointer-events: none;
+        }
+
+        body.saindo-transicao::before {
+            filter: blur(0px) brightness(1) saturate(1);
+            opacity: 0;
+        }
+
+        /* HEADER */
+        header.header {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .header-login-container {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: flex-end;
+            transform: translateX(-30px);
+        }
+
+        .header-login-link {
+            color: white;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .login-text-wrapper {
+            position: relative;
+            display: inline-block;
+            min-height: 1.7em;
+        }
+
+        .header-login-link .login-text-default,
+        .header-login-link .login-text-hover {
+            display: inline-block;
+            transition: opacity 0.4s ease;
+            font-size: 1.1em;
+            font-weight: 600;
+            line-height: 1.5;
+            color: white;
+            padding-bottom: 4px;
+        }
+
+        .header-login-link .login-text-default {
+            opacity: 1;
+        }
+
+        .header-login-link .login-text-hover {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            white-space: nowrap;
+        }
+
+        .header-login-link.fading-out .login-text-default {
+            opacity: 0;
+        }
+
+        .header-login-link.show-hover-text .login-text-default {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .header-login-link.show-hover-text .login-text-hover {
+            opacity: 1;
+        }
+
+        .login-text-default::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: auto;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition:
+                width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .header-login-link:hover .login-text-default::after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+
+        .header-login-link.fading-out .login-text-default::after {
+            width: 0 !important;
+            left: 0 !important;
+            right: 100% !important;
+        }
+
+        .header-login-link.show-hover-text .login-text-default::after {
+            width: 0 !important;
+            opacity: 0;
+        }
+
+        .header-login-link.active-hover .login-text-default::after {
+            width: 0 !important;
+            transition: width 0.6s ease;
+        }
+
+        .header-login-link:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .welcome-section {
+            margin-top: 48px;
+            text-align: center;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0;
+        }
+
+        .welcome-title {
+            font-size: 2.3rem;
+            color: white;
+            margin-bottom: 8px;
+            background: transparent;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            background: transparent;
+            margin: 0;
+        }
+
+        .topics-header-container {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .topics-header {
+            background: rgba(20, 20, 30, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+        }
+
+        .topics-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .topics-section {
+            margin-top: 40px;
+        }
+
+        .cards-grid {
+            margin-bottom: 20px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .galleries-section {
+            margin-top: 40px;
+        }
+
+        .card-icon {
+            width: 84px;
+            height: 84px;
+            border-radius: 16px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 12px auto;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .about-button-link {
+            display: inline-block;
+            padding: 12px 32px;
+            background: rgba(20, 20, 30, 0.5) !important;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .about-button-link:hover {
+            background: rgba(30, 30, 40, 0.65) !important;
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .about-wrapper {
+            text-align: center;
+            margin-top: 40px;
+            padding-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            header.header {
+                padding: 12px 16px;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .header-login-container {
+                transform: translateX(0);
+                justify-content: center;
+            }
+
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+
+            .about-wrapper {
+                margin-top: 50px;
+                padding-bottom: 20px;
+            }
+        }
+
+        .carousel-caption {
+            max-height: 120px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+        }
+
+        @media (max-width: 480px) {
+            .carousel-caption {
+                max-height: 100px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-slide {
+                padding: 8px;
+            }
+        }

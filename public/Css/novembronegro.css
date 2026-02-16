@@ -1,0 +1,701 @@
+/* ===== RESET E BASE ===== */
+body {
+    position: relative;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+body.saindo-transicao::before {
+    filter: blur(0px) brightness(1) saturate(1);
+    opacity: 0;
+}
+
+/* ===== HEADER ===== */
+header.header {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.header-login-container {
+    flex-shrink: 0;
+    transform: translateX(-30px);
+}
+
+.header-login-link {
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.login-text-wrapper {
+    position: relative;
+    display: inline-block;
+    min-height: 1.7em;
+}
+
+.header-login-link .login-text-default,
+.header-login-link .login-text-hover {
+    display: inline-block;
+    transition: opacity 0.4s ease;
+    font-size: 1.1em;
+    font-weight: 600;
+    line-height: 1.5;
+    color: white;
+}
+
+.header-login-link .login-text-default {
+    opacity: 1;
+}
+
+.header-login-link .login-text-hover {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.header-login-link.show-hover-text .login-text-default {
+    opacity: 0;
+}
+
+.header-login-link.show-hover-text .login-text-hover {
+    opacity: 1;
+}
+
+.login-text-default::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.header-login-link:hover .login-text-default::after {
+    width: 100%;
+}
+
+/* Linha descrescendo após 1s de hover */
+.header-login-link.active-hover .login-text-default::after {
+    width: 0 !important;
+    transition: width 0.6s ease;
+}
+
+@media (max-width: 768px) {
+    header.header {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .header-login-container {
+        transform: translateX(0);
+    }
+}
+
+/* ===== TRANSIÇÃO DE PÁGINA ===== */
+.page-transition-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    pointer-events: none;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: opacity 0.6s ease;
+}
+
+.page-transition-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.body-novembronegro .container {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.body-novembronegro.page-enter-active .container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(20, 20, 30, 0.7);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: rgba(30, 30, 40, 0.85);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== CONTEÚDO ===== */
+.content-section {
+    margin: 40px 0;
+}
+
+.content-section h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+}
+
+.content-card {
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-text p {
+    color: #e9f5ff;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+/* ===== CAROUSEL DE VÍDEOS ===== */
+.video-carousel {
+  position: relative;
+  margin: 24px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 100%;
+}
+
+.video-carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.video-slide {
+  flex: 0 0 100%;       /* um slide por vez */
+  box-sizing: border-box;
+}
+
+/* mantém proporção original do player, só limita a largura */
+
+/* navegação */
+.video-carousel-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+
+  /* NOVEMBRO NEGRO */
+  .body-novembronegro::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: url('../Assets/Imagens/Background/Informática/BackgroundInfo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(13px) brightness(1) saturate(1.25);
+    opacity: 1;
+    transition: filter 1.2s cubic-bezier(0.33, 0.66, 0.66, 1), opacity 1.2s cubic-bezier(0.33, 0.66, 0.66, 1);
+    pointer-events: none;
+  }
+
+.video-carousel-btn {
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    border-radius: 999px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    margin: 0 8px;
+    transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.video-carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.85);
+    transform: translateY(-1px);
+}
+
+/* Header de detalhamento - DENTRO do carousel, parte de cima */
+.video-detail-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 18px;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.65) 40%,
+            rgba(0, 0, 0, 0.0) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.video-carousel:hover .video-detail-header {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.video-detail-trigger {
+    color: #e9f5ff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+/* barra branca no hover do texto */
+.video-detail-trigger::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    transform: translateX(-50%);
+    background: #ffffff;
+    transition: width 0.25s ease;
+}
+
+.video-detail-trigger:hover::after {
+    width: 100%;
+}
+
+/* Texto alternativo para o detalhamento */
+.video-detail-trigger .detail-text-default,
+.video-detail-trigger .detail-text-alt {
+    display: inline-block;
+    transition: opacity 0.4s ease;
+}
+
+.video-detail-trigger .detail-text-default {
+    opacity: 1;
+}
+
+.video-detail-trigger .detail-text-alt {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.video-detail-trigger.show-alt-text .detail-text-default {
+    opacity: 0;
+}
+
+.video-detail-trigger.show-alt-text .detail-text-alt {
+    opacity: 1;
+}
+
+/* Linha descrescendo após 2.5s de hover no detalhamento */
+.video-detail-trigger.active-detail-hover::after {
+    width: 0 !important;
+    transition: width 0.6s ease;
+}
+
+/* Card de detalhamento: começa oculto e tem transição suave */
+.detail-card {
+    margin-top: 18px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, max-height 0.35s ease, transform 0.35s ease;
+}
+
+.detail-card.is-visible {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+}
+
+/* ===== COMENTÁRIOS ===== */
+.comments-login-warning {
+    font-size: 0.9rem;
+    color: #ffd700;
+    text-align: center;
+    margin: 20px 0;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    display: none;
+}
+
+.comments-login-warning a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.comments-login-warning a:hover {
+    color: #ffd700;
+}
+
+.comments-section {
+    margin-top: 32px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(20, 20, 30, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.comments-section h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.2rem;
+}
+
+.comments-form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(192, 211, 255, 0.6);
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.comments-form textarea:focus {
+    border-color: rgba(192, 211, 255, 1);
+}
+
+.comments-form button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00c3ff, #4dffb5);
+    color: #04101f;
+    transition: all 0.2s ease;
+}
+
+.comments-form button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 199, 255, 0.3);
+}
+
+.comments-form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.comments-list {
+    margin-top: 20px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.comments-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 199, 255, 0.5);
+    border-radius: 3px;
+}
+
+.comment-item {
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(181, 202, 255, 0.2);
+    margin-bottom: 12px;
+}
+
+.comment-meta {
+    font-size: 0.8rem;
+    color: #b8c8ff;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-meta strong {
+    color: #e9f5ff;
+}
+
+.comment-text {
+    font-size: 0.9rem;
+    color: #f1f5ff;
+    line-height: 1.4;
+}
+
+.comments-empty {
+    font-size: 0.9rem;
+    color: #a9b9e8;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    header.header {
+        padding: 12px 16px;
+    }
+
+    .container {
+        padding: 16px 12px;
+    }
+
+    .content-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .content-card {
+        padding: 16px;
+    }
+
+    .comments-section {
+        padding: 16px;
+    }
+
+    .comments-form textarea {
+        min-height: 80px;
+    }
+
+    .back-button {
+        margin-bottom: 16px;
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    .comment-context {
+        font-size: 0.85rem;
+        color: #a9b9e8;
+        margin-bottom: 8px;
+    }
+
+    .comment-context span {
+        font-weight: 600;
+        color: #e9f5ff;
+    }
+
+    .comment-item .comment-meta small {
+        font-size: 0.8rem;
+        color: #a9b9e8;
+    }
+
+    .video-current-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        margin: 4px 0 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(0, 199, 255, 0.4);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #e9f5ff;
+        text-align: left;
+    }
+
+
+}
+
+.header {
+    position: relative;
+    /* necessário para centralizar dentro dele */
+}
+
+.header-admin-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-admin-button {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(0, 150, 136, 0.7);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 200, 170, 0.5);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.header-admin-button:hover {
+    background: rgba(0, 180, 160, 0.9);
+    border-color: rgba(0, 220, 190, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 200, 170, 0.3);
+}
+
+
+
+
+/* Evita corte por object-fit: cover do CSS global */
+.body-novembronegro .video-carousel video,
+.body-novembronegro .video-carousel iframe{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* NOVEMBRO NEGRO: forçar proporção 16:9 no player */
+.body-novembronegro .video-frame,
+.body-novembronegro .video-container{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Preenche o retângulo 16:9 sem distorcer */
+.body-novembronegro .video-frame iframe,
+.body-novembronegro .video-frame video,
+.body-novembronegro .video-container iframe,
+.body-novembronegro .video-container video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  object-fit: contain; /* se quiser cortar e preencher, troque para cover */
+}
+
+
+/* NOVEMBRO NEGRO: padroniza o viewport do vídeo e evita vídeo "pequeno" */
+.body-novembronegro .video-carousel-inner{
+  aspect-ratio: 16 / 9;
+}
+
+/* garante que o slide e o frame ocupem a área do carousel */
+.body-novembronegro .video-slide{
+  height: 100%;
+}
+
+.body-novembronegro .video-frame{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* aqui é o ponto principal: NÃO usar height:auto no iframe */
+.body-novembronegro .video-frame iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  background: #000;
+}
+
+
+/* NOVEMBRO NEGRO: padroniza o viewport do vídeo e evita vídeo "pequeno" */
+.body-novembronegro .video-carousel-inner{
+  aspect-ratio: 16 / 9;
+}
+
+/* garante que o slide e o frame ocupem a área do carousel */
+.body-novembronegro .video-slide{
+  height: 100%;
+}
+
+.body-novembronegro .video-frame{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* aqui é o ponto principal: NÃO usar height:auto no iframe */
+.body-novembronegro .video-frame iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  background: #000;
+}

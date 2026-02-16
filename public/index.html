@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árvores de Escrevivências - IFRN Mossoró</title>
+    <link rel="stylesheet" href="/Css/style.css">
+    <link rel="stylesheet" href="/Css/Inicio.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo" onclick="window.location.reload()">
+            <img src="/Assets/Imagens/Icones/IconeMain.jpeg" alt="Logo Árvores de Escrevivências">
+        </div>
+
+        <div class="header-login-container">
+            <a href="/index.html" class="header-login-link" id="loginLink">
+                <div class="login-text-wrapper" id="loginWrapper">
+                    <span class="login-text-default" id="loginTextDefault">Login</span>
+                    <span class="login-text-hover" id="loginTextHover">Clique aqui!</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="welcome-section">
+            <h1 class="welcome-title">Bem-vindo ao Árvores de Escrevivências</h1>
+            <p class="welcome-subtitle">Explore os projetos desenvolvidos pelos nossos cursos</p>
+        </div>
+
+        <section class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/Assets/Imagens/Sliders/slider1main.png" alt="Slide 1: Educação Antirracista em Foco">
+                        <div class="carousel-caption">
+                            <h5>Educação Antirracista em Foco</h5>
+                            <p>Educação antirracista como caminho para igualdade, respeito e justiça social.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/Assets/Imagens/Sliders/slider2main.png"
+                            alt="Slide 2: Esporte como Espaço de Representatividade Negra">
+                        <div class="carousel-caption">
+                            <h5>Esporte como Espaço de Representatividade Negrae</h5>
+                            <p>Esporte como direito, representatividade como inspiração na luta antirracista.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/Assets/Imagens/Sliders/slider3main.png" alt="Slide 3: IFRN Mossoró">
+                        <div class="carousel-caption">
+                            <h5>Música e ritmos afro-brasileiros</h5>
+                            <p>Batidas que celebram ancestralidade, fortalecem a consciência antirracista e inspiram novas formas de expressão</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/Assets/Imagens/Sliders/slider4main.png" alt="Slide 4: Teste">
+                        <div class="carousel-caption">
+                            <h5>Artes cênicas e visuais</h5>
+                            <p>Teatro, dança e artes visuais como espaços de ancestralidade, orgulho negro e imaginação de futuros mais justos.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control carousel-control-prev" onclick="moveSlide(-1)"
+                    aria-label="Slide anterior">
+                    <span>❮</span>
+                </button>
+                <button class="carousel-control carousel-control-next" onclick="moveSlide(1)"
+                    aria-label="Próximo slide">
+                    <span>❯</span>
+                </button>
+                <div class="carousel-indicators">
+                    <button class="active" onclick="currentSlide(0)" aria-label="Ir para slide 1"></button>
+                    <button onclick="currentSlide(1)" aria-label="Ir para slide 2"></button>
+                    <button onclick="currentSlide(2)" aria-label="Ir para slide 3"></button>
+                    <button onclick="currentSlide(3)" aria-label="Ir para slide 4"></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="topics-section">
+            <div class="topics-header-container">
+                <div class="topics-header">
+                    <h2>Tópicos Abordados</h2>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <article class="card" data-page="/Paginas/novembronegro.html" tabindex="0">
+                    <img class="card-icon" src="/Assets/Imagens/Icones/Informática/inteligente.jpeg"
+                        alt="Novembro Negro">
+                    <h2 class="card-title">Educação Antirracista e Questões Sociais</h2>
+                    <p class="card-description">Da sala de aula para o mundo: igualdade racial como prática diária.</p>
+                </article>
+
+                <article class="card" data-page="/Paginas/inovacao.html" tabindex="0">
+                    <img class="card-icon" src="/Assets/Imagens/Icones/Edificações/esporte.jpeg" alt="Inovação">
+                    <h2 class="card-title">Esportes e Representatividade</h2>
+                    <p class="card-description">Esporte como voz: corpos negros ocupando espaços e fazendo história.</p>
+                </article>
+
+                <article class="card" data-page="/Paginas/sustentabilidade.html" tabindex="0">
+                    <img class="card-icon" src="/Assets/Imagens/Icones/Mecânica/arte.jpeg" alt="Sustentabilidade">
+                    <h2 class="card-title">Artes Cênicas e Visuais</h2>
+                    <p class="card-description">Desenvolvimento sustentável e preservação ambiental</p>
+                </article>
+
+                <article class="card" data-page="/Paginas/educacao.html" tabindex="0">
+                    <img class="card-icon" src="/Assets/Imagens/Icones/Meio Ambiente/tambo.jpeg" alt="Educação">
+                    <h2 class="card-title">Música e Ritmos Afro-Brasileiros</h2>
+                    <p class="card-description">Conhecimento transformador e formação cidadã</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SEPARAÇÃO: GALERIAS VINCULADAS -->
+        <section class="galleries-section">
+            <div class="topics-header-container">
+                <div class="topics-header">
+                    <h2>Galerias vinculadas</h2>
+                </div>
+            </div>
+
+            <div class="cards-grid galleries-grid">
+                <article class="card" data-page="Paginas/galeria.html" tabindex="0">
+                    <img class="card-icon" src="/Assets/Imagens/Icones/galeriaIcon.jpg"
+                        alt="Galeria Educação antirracista e questões sociais">
+                    <h2 class="card-title">Galeria de Imagens</h2>
+                    <p class="card-description">
+                        Conhecimento transformador e formação cidadã em foco.
+                    </p>
+                </article>
+            </div>
+        </section>
+        <!-- FIM GALERIAS VINCULADAS -->
+
+        <section class="about-wrapper">
+            <a href="/Paginas/sobrenos.html" class="about-button-link">👥 Sobre Nós →</a>
+        </section>
+    </main>
+
+    <!-- Dependências para SUAP -->
+<!-- Dependências SUAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/js.cookie.js"></script>
+<script src="/js/settings.js"></script>
+<script src="/js/client.js"></script>
+
+<!-- Common -->
+<script src="/js/common/auth.js"></script>
+<script src="/js/common/ui.js"></script>
+<script src="/js/common/carousel.js"></script>
+
+<!-- Página específica (vamos criar depois) -->
+<script src="/js/pages/index.js"></script>
+</body>
+
+</body>
+
+</html>

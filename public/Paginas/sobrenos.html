@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Árvores de Escrevivências</title>
+    <link rel="stylesheet" href="/Css/sobrenos.css">
+    <link rel="stylesheet" href="/Css/style.css">
+
+</head>
+
+<body class="body-sobrenos">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo" onclick="window.location.href='/index.html'" role="button" tabindex="0"
+            aria-label="Ir para página inicial">
+            <img src="/Assets/Imagens/Icones/IconeMain.jpeg" alt="Logo Árvores de Escrevivências">
+        </div>
+        <div class="site-title">Árvores de Escrevivências</div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Back Button -->
+        <nav class="back-button-nav">
+            <a href="/index.html" class="back-button" aria-label="Voltar à página inicial">
+                <span>←</span>
+                <span>Voltar ao Início</span>
+            </a>
+        </nav>
+
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1 class="welcome-title">Nossa Equipe</h1>
+            <p class="welcome-subtitle">Conheça os responsáveis pelo projeto Árvores de Escrevivências</p>
+        </section>
+
+        <!-- Team Grid -->
+        <section class="team-grid">
+            <!-- Membro 1 -->
+            <article class="team-card" tabindex="0">
+                <div class="member-photo">
+                    <img src="/Assets/placeholder.jpg" alt="Everton Rodrigues - Front-end">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Everton<div>Rodrigues</div>
+                    </h3>
+                    <p class="member-role">Front-end</p>
+                </div>
+            </article>
+
+            <!-- Membro 2 -->
+            <article class="team-card" tabindex="0">
+                <div class="member-photo">
+                    <img src="/Assets/placeholder.jpg" alt="Nathanael Martins - Back-end">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Nathanael<div>Martins</div>
+                    </h3>
+                    <p class="member-role">Back-end</p>
+                </div>
+            </article>
+
+            <!-- Membro 3 -->
+            <article class="team-card" tabindex="0">
+                <div class="member-photo">
+                    <img src="/Assets/Imagens/Icones/IconesSobre/Michael Sangel.jpeg"
+                        alt="Michael Sangel - Coordenação Front-end">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Michael<div>Sangel</div>
+                    </h3>
+                    <p class="member-role">Coordenação Front-end</p>
+                </div>
+            </article>
+
+            <!-- Membro 4 -->
+            <article class="team-card" tabindex="0">
+                <div class="member-photo">
+                    <img src="/Assets/placeholder.jpg" alt="Arthur Ambrósio - Coordenação Back-end">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Arthur<div>Ambrósio</div>
+                    </h3>
+                    <p class="member-role">Coordenação do Back-end</p>
+                </div>
+            </article>
+
+            <!-- Membro 5 -->
+            <article class="team-card" tabindex="0">
+                <div class="member-photo">
+                    <img src="/Assets/Imagens/Icones/IconesSobre/pedavi.png" alt="Pedro Davi - Front-end">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Pedro<div>Davi</div>
+                    </h3>
+                    <p class="member-role">Front-end</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <p class="footer-text">&copy; 2025 Árvores de Escrevivências. Todos os direitos reservados.</p>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-section">
+                <p class="footer-text">Desenvolvido por: Everton Rodrigues, Nathanael Martins, Michael Sangel, Arthur
+                    Ambrósio, Pedro Davi</p>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-section">
+                <p class="footer-text">Contato: <a href="mailto:arvoresdeescrevivencias@ifrn.edu.br"
+                        class="footer-email">arvoresdeescrevivencias@ifrn.edu.br</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Card fade-in animation com stagger
+        const cards = document.querySelectorAll('.team-card');
+        cards.forEach((card, i) =>
+            setTimeout(() => card.classList.add('active'), 220 + i * 140)
+        );
+
+        // Smooth page transitions IGUAL à home
+        function smoothTransition(url) {
+            document.body.classList.add('saindo-transicao');
+            const container = document.querySelector('.container');
+            if (container) {
+                container.style.opacity = '1';
+                container.style.transform = 'scale(1)';
+                requestAnimationFrame(() => {
+                    container.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                    container.style.opacity = '0';
+                    container.style.transform = 'scale(0.96)';
+                });
+            }
+            setTimeout(() => {
+                window.location.href = url;
+            }, 900);
+        }
+
+        const backButton = document.querySelector('.back-button');
+        if (backButton) {
+            backButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                smoothTransition('/index.html');
+            });
+        }
+
+        window.addEventListener('load', () => {
+            const container = document.querySelector('.container');
+            if (!container) return;
+            container.style.opacity = '0';
+            container.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                container.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                container.style.opacity = '1';
+                container.style.transform = 'scale(1)';
+            }, 50);
+        });
+    </script>
+</body>
+
+</html>

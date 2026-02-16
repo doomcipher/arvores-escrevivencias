@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educação Antirracista e Questões sociais</title>
+    <link rel="stylesheet" href="/Css/style.css">
+    <link rel="stylesheet" href="/Css/novembronegro.css">
+
+</head>
+
+<body class="body-novembronegro">
+    <div class="page-transition-overlay" id="pageTransitionOverlay"></div>
+
+    <header class="header">
+        <div class="logo" id="logo">
+        </div>
+
+        <!-- BOTÃO ADMIN (só aparece para professores) -->
+        <div class="header-admin-container" id="headerAdminContainer" style="display:none;">
+            <a href="admin.html" class="header-admin-button" aria-label="Ir para painel de administração">
+                🔑 Painel Admin
+            </a>
+        </div>
+
+        <div class="header-login-container">
+            <a href="#" class="header-login-link" id="loginLink">
+                <div class="login-text-wrapper">
+                    <span class="login-text-default">Login</span>
+                    <span class="login-text-hover">Clique aqui!</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+
+    <main class="container">
+        <a href="#" class="back-button" id="backButton" aria-label="Voltar ao início">
+            <span>←</span>
+            <span>Voltar ao Início</span>
+        </a>
+
+        <section class="content-section" data-post-id="1">
+            <h2 data-title>Educação Antirracista e Questões Sociais - Vídeos </h2>
+
+            <p id="videoTitleCurrent" class="video–current-title"></p>
+
+            <div class="video-carousel" id="videoCarousel">
+                <div class="video-detail-header">
+                    <span class="video-detail-trigger" id="videoDetailTrigger">
+                        <span class="detail-text-default">Detalhamento do vídeo</span>
+                        <span class="detail-text-alt">Detalhamento abaixo!</span>
+                    </span>
+                </div>
+
+
+                <div class="video-carousel-inner" id="videoCarouselInner">
+                    <!-- slides serão inseridos via JS com dados do banco -->
+                </div>
+
+                <div class="video-carousel-nav">
+                    <button type="button" class="video-carousel-btn" id="prevVideoBtn">‹</button>
+                    <button type="button" class="video-carousel-btn" id="nextVideoBtn">›</button>
+                </div>
+            </div>
+
+
+            <div class="content-card detail-card" id="detailCard">
+                <div class="content-text">
+                    <p id="videoDescription"></p>
+                </div>
+            </div>
+
+            <section class="comments-section" data-post-id="1">
+                <h3>Comentários</h3>
+
+                <p class="comments-login-warning" id="commentsWarning1" style="display:none;">
+                    🔐 Faça login via SUAP para comentar.
+                    <a href="#" id="loginComments1">Entrar agora</a>
+                </p>
+
+                <!-- contexto do vídeo atual -->
+                <p class="comment-context" id="commentContext1">
+                    Em resposta ao vídeo: <span id="commentVideoTitle1"></span>
+                </p>
+
+                <div class="comments-form" id="commentsForm1">
+                    <textarea id="commentText1" placeholder="Escreva seu comentário..." maxlength="500"></textarea>
+                    <button type="button" id="sendComment1" disabled>Publicar</button>
+                </div>
+
+                <div class="comments-list" id="commentsList1">
+                    <p class="comments-empty" id="commentsEmpty1">Nenhum comentário ainda.</p>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <!-- Dependências SUAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/js.cookie.js"></script>
+    <script src="/js/settings.js"></script>
+    <script src="/js/client.js"></script>
+
+    <!-- Common -->
+    <script src="/js/common/auth.js"></script>
+    <script src="/js/common/ui.js"></script>
+    <script src="/js/common/tooltip.js"></script>
+    <script src="/js/common/comentarios.js"></script>
+
+
+    <!-- Página específica -->
+    <script src="/js/pages/novembronegro.js"></script>
+
+</body>
+
+</html>

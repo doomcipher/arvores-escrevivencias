@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionando...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/js/js.cookie.js"></script>
+  <script src="/js/settings.js"></script>
+  <script src="/js/client.js"></script>
+  <script src="/js/common/auth.js"></script>
+
+  <script>
+    console.log("ORIGIN:", window.location.origin);
+    console.log("HREF:", window.location.href);
+
+    // extrai token do hash
+    const hash = window.location.hash.replace(/^#/, '');
+    const params = new URLSearchParams(hash);
+    const accessToken = params.get('access_token');
+
+    console.log("HASH:", window.location.hash);
+    console.log("access_token?", !!accessToken);
+
+    if (!accessToken) {
+      document.body.innerHTML += "<p>Não veio access_token no callback.</p>";
+    } else {
+      // SALVAR token: aqui depende de como seu SuapClient implementa.
+      // Vamos salvar nos 2 lugares mais comuns:
+      try {
+        localStorage.setItem('access_token', accessToken);
+        localStorage.setItem('suap_access_token', accessToken);
+        Cookies.set('access_token', accessToken);
+        Cookies.set('suap_access_token', accessToken);
+      } catch (e) {
+        console.error("Erro salvando token:", e);
+      }
+
+      // Agora tenta processar o login (buscar dados e chamar tua API)
+      // IMPORTANTE: no callback, não chame initLoginLink (depende de elemento).
+      if (window.SuapAuth && SuapAuth.handleCallback) {
+        SuapAuth.handleCallback();
+      } else {
+        console.warn("SuapAuth.handleCallback não existe (precisa refatorar auth.js como combinamos).");
+      }
+
+      // Redireciona depois (aumentei um pouco)
+      setTimeout(() => window.location.href = '/', 1500);
+    }
+  </script>
+</body>
+
+</html>

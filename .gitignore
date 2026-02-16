@@ -1,0 +1,23 @@
+# Dependências
+/vendor/
+node_modules/
+
+
+# Logs e cache (ajuste conforme suas pastas reais)
+logs/
+*.log
+cache/
+tmp/
+
+# Uploads/arquivos gerados (ajuste para sua estrutura)
+uploads/
+storage/
+public/uploads/
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

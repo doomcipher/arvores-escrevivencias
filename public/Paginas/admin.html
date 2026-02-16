@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Admin - Novembro Negro</title>
+    <link rel="stylesheet" href="/Css/admin.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📊 Painel de Admin</h1>
+            <div class="header-user" id="headerUser" style="display:none;">
+                <span id="userInfo"></span>
+                <button class="logout-btn" id="logoutBtn">Sair</button>
+            </div>
+        </header>
+
+        <main class="container">
+            <a href="/index.html" class="back-button" id="backButton" aria-label="Voltar ao início">
+                <span>←</span>
+                <span>Voltar ao Início</span>
+            </a>
+
+
+            <!-- Acesso negado -->
+            <div id="accessDenied" style="display:none;">
+                <div class="access-denied">
+                    <h2>🔐 Acesso Negado</h2>
+                    <p>Você não tem permissão para acessar este painel.</p>
+                    <p style="margin-top: 20px;"><a href="/index.html">Voltar ao Início</a></p>
+                </div>
+            </div>
+
+            <!-- Conteúdo principal -->
+            <div id="adminContent" style="display:none;">
+                <div class="alert" id="alert"></div>
+
+                <div class="main-content">
+                    <!-- Formulário -->
+                    <div class="form-panel">
+                        <h2 id="formTitle">Criar Novo Post</h2>
+
+                        <form id="postForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="postTitle">Título</label>
+                                <input type="text" id="postTitle" placeholder="Ex: Exposição de Fotos - Turma 2024"
+                                    maxlength="100" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postDesc">Descrição</label>
+                                <textarea id="postDesc" placeholder="Descrição do post..." maxlength="500"
+                                    required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postTipo">Tipo da postagem</label>
+                                <select id="postTipo" required>
+                                    <option value="video">Vídeo</option>
+                                    <option value="imagem" selected>Imagem</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postTema">Tema</label>
+                                <select id="postTema" required>
+                                    <option value="educacao_antirracista">Educação Antirracista e Questões Sociais
+                                    </option>
+                                    <option value="esportes_representatividade">Esportes e Representatividade</option>
+                                    <option value="artes_cenicas_visuais">Artes Cênicas e Visuais</option>
+                                    <option value="musica_ritmos_afro_brasileiros">Música e Ritmos Afro-Brasileiros
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="filesGroup">
+                                <label for="postFiles" id="filesLabel">
+                                    Arquivo(s) da postagem
+                                </label>
+                                <input type="file" id="postFiles">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit" id="submitBtn">Criar Post</button>
+                                <button type="button" class="btn-cancel" id="cancelBtn" style="display:none;">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- Listagem -->
+                    <div class="posts-panel">
+                        <h2>Posts Cadastrados</h2>
+                        <div class="posts-list" id="postsList">
+                            <div class="posts-empty">Carregando posts...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comments-panel">
+                <h2>Comentários pendentes</h2>
+                <div id="comentariosPendentes">
+                    <p class="comentarios-vazio">Não há comentários pendentes.</p>
+                </div>
+            </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/js.cookie.js"></script>
+    <script src="/js/settings.js"></script>
+    <script src="/js/client.js"></script>
+
+    <script src="/js/pages/admin.js"></script>
+
+
+</body>
+
+</html>
