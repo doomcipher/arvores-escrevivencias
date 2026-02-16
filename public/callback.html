@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Redirecionando...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
   <p>Autenticando…</p>
+
   <script>
+    // Pega o token vindo no fragment (#access_token=...)
     const hash = window.location.hash.replace(/^#/, '');
     const params = new URLSearchParams(hash);
     const accessToken = params.get('access_token');
 
     if (!accessToken) {
-      document.body.innerHTML = "<p>Erro: não veio access_token.</p>";
+      document.body.innerHTML = "<p>Erro: não veio access_token do SUAP.</p>";
     } else {
+      // Envia pro backend validar e criar sessão
       fetch('/api/auth/token', {
         method: 'POST',
-        headers: {'Content-Type':'application/json'},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ access_token: accessToken })
       })
       .then(async (res) => {
         if (!res.ok) throw new Error(await res.text());
-        window.location.replace('/'); // replace pra não deixar token no histórico
+        // replace remove o hash do histórico e não deixa token “preso” no back/forward
+        window.location.replace('/');
       })
       .catch(() => {
         document.body.innerHTML = "<p>Erro ao autenticar.</p>";
