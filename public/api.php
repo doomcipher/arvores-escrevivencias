@@ -5,7 +5,7 @@
 
 // raiz do projeto (fora de public/)
 if (!defined('BASE_PATH')) {
-    define('BASE_PATH', '/var/www/project');
+    define('BASE_PATH', realpath(__DIR__ . '/..'));
 }
 
 require_once BASE_PATH . '/src/Helpers/Response.php';
