@@ -2,7 +2,7 @@
 
 // Caminho base da aplicação (raiz do projeto, fora de public/)
 if (!defined('BASE_PATH')) {
-    define('BASE_PATH', '/var/www/project');
+    define('BASE_PATH', realpath(__DIR__ . '/..'));
 }
 
 // ============================================
